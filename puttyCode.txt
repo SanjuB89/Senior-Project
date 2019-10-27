@@ -1,0 +1,232 @@
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ sudo service haproxy start
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ /etc/haproxy/haproxy.cfg
+-bash: /etc/haproxy/haproxy.cfg: Permission denied
+pi@Server1:~ $ nano /etc/haproxy/haproxy.cfg
+pi@Server1:~ $ sudo nano /etc/haproxy/haproxy.cfg
+pi@Server1:~ $ ssh pi@192.168.0.201
+Linux Server2 4.19.75-v7+ #1270 SMP Tue Sep 24 18:45:11 BST 2019 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Oct 16 22:48:19 2019 from 192.168.0.200
+pi@Server2:~ $ node  basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server2:~ $ exit
+logout
+Connection to 192.168.0.201 closed.
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ sudo service haproxy start
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ sudo netstat -ltup
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:1936            0.0.0.0:*               LISTEN      16333/haproxy
+tcp        0      0 0.0.0.0:http            0.0.0.0:*               LISTEN      16333/haproxy
+tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN      4904/sshd
+tcp6       0      0 [::]:ssh                [::]:*                  LISTEN      4904/sshd
+udp        0      0 0.0.0.0:42294           0.0.0.0:*                           310/avahi-daemon: r
+udp        0      0 0.0.0.0:bootpc          0.0.0.0:*                           369/dhcpcd
+udp        0      0 0.0.0.0:mdns            0.0.0.0:*                           310/avahi-daemon: r
+udp6       0      0 [::]:dhcpv6-client      [::]:*                              369/dhcpcd
+udp6       0      0 [::]:34432              [::]:*                              310/avahi-daemon: r
+udp6       0      0 [::]:mdns               [::]:*                              310/avahi-daemon: r
+pi@Server1:~ $ sudo nano /etc/haproxy/haproxy.cfg
+pi@Server1:~ $ sudo service haproxy start
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ sudo nano /etc/haproxy/haproxy.cfg
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ nano basic_node_webserver.js
+pi@Server1:~ $ nano demofile.html
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ node  demofile.html
+/home/pi/demofile.html:1
+(function (exports, require, module, __filename, __dirname) { <html>
+                                                              ^
+
+SyntaxError: Unexpected token <
+    at new Script (vm.js:79:7)
+    at createScript (vm.js:251:10)
+    at Object.runInThisContext (vm.js:303:10)
+    at Module._compile (internal/modules/cjs/loader.js:657:28)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+    at Module.load (internal/modules/cjs/loader.js:599:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:530:3)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:742:12)
+    at startup (internal/bootstrap/node.js:283:19)
+pi@Server1:~ $ nano demofile.html
+pi@Server1:~ $ nano basic_node_webserver.js
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ nano demofile.html
+pi@Server1:~ $ nano basic_node_webserver.js
+pi@Server1:~ $ nano demofile.html
+pi@Server1:~ $ nano basic_node_webserver.js
+pi@Server1:~ $ nano basic_node_webserver.js
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.200  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 2601:603:1c7f:db90:841f:fac1:9a58:c4c8  prefixlen 64  scopeid 0x0<global>
+        inet6 fe80::7749:1c53:7f9e:ffb7  prefixlen 64  scopeid 0x20<link>
+        inet6 2601:603:1c7f:db90::3  prefixlen 128  scopeid 0x0<global>
+        ether b8:27:eb:9c:8b:28  txqueuelen 1000  (Ethernet)
+        RX packets 1332530  bytes 260831834 (248.7 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1046263  bytes 84568144 (80.6 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 733235  bytes 37877656 (36.1 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 733235  bytes 37877656 (36.1 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlan0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether b8:27:eb:c9:de:7d  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+pi@Server1:~ $ ifconfig/all
+-bash: ifconfig/all: No such file or directory
+pi@Server1:~ $ ifconfig -all
+ifconfig: option `-all' not recognised.
+ifconfig: `--help' gives usage information.
+pi@Server1:~ $ ifconfig --all
+ifconfig: option `--all' not recognised.
+ifconfig: `--help' gives usage information.
+pi@Server1:~ $ ifconfig -all
+ifconfig: option `-all' not recognised.
+ifconfig: `--help' gives usage information.
+pi@Server1:~ $ ifconfig --help
+Usage:
+  ifconfig [-a] [-v] [-s] <interface> [[<AF>] <address>]
+  [add <address>[/<prefixlen>]]
+  [del <address>[/<prefixlen>]]
+  [[-]broadcast [<address>]]  [[-]pointopoint [<address>]]
+  [netmask <address>]  [dstaddr <address>]  [tunnel <address>]
+  [outfill <NN>] [keepalive <NN>]
+  [hw <HW> <address>]  [mtu <NN>]
+  [[-]trailers]  [[-]arp]  [[-]allmulti]
+  [multicast]  [[-]promisc]
+  [mem_start <NN>]  [io_addr <NN>]  [irq <NN>]  [media <type>]
+  [txqueuelen <NN>]
+  [[-]dynamic]
+  [up|down] ...
+
+  <HW>=Hardware Type.
+  List of possible hardware types:
+    loop (Local Loopback) slip (Serial Line IP) cslip (VJ Serial Line IP)
+    slip6 (6-bit Serial Line IP) cslip6 (VJ 6-bit Serial Line IP) adaptive (Adaptive Serial Line IP)
+    ash (Ash) ether (Ethernet) ax25 (AMPR AX.25)
+    netrom (AMPR NET/ROM) rose (AMPR ROSE) tunnel (IPIP Tunnel)
+    ppp (Point-to-Point Protocol) hdlc ((Cisco)-HDLC) lapb (LAPB)
+    arcnet (ARCnet) dlci (Frame Relay DLCI) frad (Frame Relay Access Device)
+    sit (IPv6-in-IPv4) fddi (Fiber Distributed Data Interface) hippi (HIPPI)
+    irda (IrLAP) ec (Econet) x25 (generic X.25)
+    eui64 (Generic EUI-64)
+  <AF>=Address family. Default: inet
+  List of possible address families:
+    unix (UNIX Domain) inet (DARPA Internet) inet6 (IPv6)
+    ax25 (AMPR AX.25) netrom (AMPR NET/ROM) rose (AMPR ROSE)
+    ipx (Novell IPX) ddp (Appletalk DDP) ec (Econet)
+    ash (Ash) x25 (CCITT X.25)
+pi@Server1:~ $ ifconfig -a
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.200  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 2601:603:1c7f:db90:841f:fac1:9a58:c4c8  prefixlen 64  scopeid 0x0<global>
+        inet6 fe80::7749:1c53:7f9e:ffb7  prefixlen 64  scopeid 0x20<link>
+        inet6 2601:603:1c7f:db90::3  prefixlen 128  scopeid 0x0<global>
+        ether b8:27:eb:9c:8b:28  txqueuelen 1000  (Ethernet)
+        RX packets 1332913  bytes 260867550 (248.7 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1046758  bytes 84612648 (80.6 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 733301  bytes 37880956 (36.1 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 733301  bytes 37880956 (36.1 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlan0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether b8:27:eb:c9:de:7d  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+pi@Server1:~ $ ifconfig -a -s
+Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0      1500  1333277      0      0 0       1047331      0      0      0 BMRU
+lo       65536   733391      0      0 0        733391      0      0      0 LRU
+wlan0     1500        0      0      0 0             0      0      0      0 BMU
+pi@Server1:~ $ ifconfig -s
+Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0      1500  1333337      0      0 0       1047415      0      0      0 BMRU
+lo       65536   733401      0      0 0        733401      0      0      0 LRU
+wlan0     1500        0      0      0 0             0      0      0      0 BMU
+pi@Server1:~ $ ifconfig -v
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.200  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 2601:603:1c7f:db90:841f:fac1:9a58:c4c8  prefixlen 64  scopeid 0x0<global>
+        inet6 fe80::7749:1c53:7f9e:ffb7  prefixlen 64  scopeid 0x20<link>
+        inet6 2601:603:1c7f:db90::3  prefixlen 128  scopeid 0x0<global>
+        ether b8:27:eb:9c:8b:28  txqueuelen 1000  (Ethernet)
+        RX packets 1333361  bytes 260910980 (248.8 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1047447  bytes 84667652 (80.7 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 733407  bytes 37886256 (36.1 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 733407  bytes 37886256 (36.1 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlan0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether b8:27:eb:c9:de:7d  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+pi@Server1:~ $ node basic_node_webserver.js
+Server running at http://127.0.0.1:8000/
+^C
+pi@Server1:~ $
