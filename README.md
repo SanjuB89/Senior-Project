@@ -1,2 +1,2 @@
 # Senior-Project
-Lab Tutorial
+Parallel Computing Using MPI and OpenMP in C language
