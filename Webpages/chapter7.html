@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>    Chapter 7       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Chapter 7 - OpenMP Clauses </h2></font>
+			<center><p>
+<p><h3>Directive Clauses</h3>
+<p>The table below summarizes which clauses are accepted by which OpenMP directives:
+ <center><img  src="17.png"/>
+<p><b>The following OpenMP directives do not accept clauses: </b>
+<p>MASTER 
+<p>CRITICAL 
+<p>BARRIER 
+<p>ATOMIC 
+<p>FLUSH 
+<p>ORDERED 
+<p>THREADPRIVATE
+
+<p><p><h3>Data Scope Attribute Clauses</h3>
+<p>These are used in conjunction with several directives (PARALLEL, DO/for, and SECTIONS) to control the scoping of enclosed variables. 
+<p>These constructs provide the ability to control the data environment during execution of parallel constructs. 
+<p>They define how and which data variables in the serial section of the program are transferred to the parallel regions of the program (and back) 
+<p>They define which variables will be visible to all threads in the parallel regions and which variables will be privately allocated to all threads.
+<p><b>The IF clause simply specifies whether a loop should be executed in parallel or in serial.</b>
+<p>
+<p><h3>The PRIVATE clause declares variables in its list to be private to each thread.</h3>
+<p><b>PRIVATE variables behave as follows: </b>
+<p>	A new object of the same type is declared once for each thread in the team 
+<p>	All references to the original object are replaced with references to the new object 
+<p>	Should be assumed to be uninitialized for each thread
+<p>
+<p><h3>The SHARED clause declares variables in its list to be shared among all threads in the team.</h3>
+<p>A shared variable exists in only one memory location and all threads can read or write to that address 
+<p>It is the programmer's responsibility to ensure that multiple threads properly access SHARED variables (such as via CRITICAL sections)
+<p>
+<p><h3>The DEFAULT clause allows the user to specify a default scope for all variables in the lexical extent of any parallel region.</h3>
+<p>Specific variables can be exempted from the default using the PRIVATE, SHARED, FIRSTPRIVATE, LASTPRIVATE, and REDUCTION clauses 
+<p>The C/C++ OpenMP specification does not include private or firstprivate as a possible default. However, actual implementations may provide this option. 
+<p>Using NONE as a default requires that the programmer explicitly scope all variables.
+<p>
+<p><h3>The REDUCTION clause performs a reduction operation on the variables that appear in its list. </h3>
+<p>A private copy for each list variable is created and initialized for each thread. At the end of the reduction, the reduction variable is applied to all private copies of the shared variable, and the final result is written to the global shared variable.
+<p> <center><img  src="18.png"/>
+<p>
+<p><p>A parallel region has at least one barrier, at its end, and may have additional barriers within it. At each barrier, the other members of the team must wait for the last thread to arrive. To minimize this wait time, shared work should be distributed so that all threads arrive at the barrier at about the same time.
+<p><b>If some of that shared work is contained in for constructs, the SCHEDULE clause can be used for this purpose.</b>
+<p><p>The code below demonstrates the SCHEDULE clause:
+<p><p>#pragma omp parallel for schedule(dynamic)
+<p>  for(i=0; i<n; i++) {
+<p>    unpredictable_amount_of_work(i);
+<p>}
+<p>
+<p><b>The ORDERED clause is required on a parallel for statement if an ordered directive is to be used in the loop. The following code demonstrates the ORDERED clause:</b>
+<p>#pragma omp parallel for private(myval) ordered
+<p>{
+<p>   for(i=1; i<=n; i++){
+<p>      myval = do_lots_of_work(i);
+<p>      #pragma omp ordered
+<p>      {
+<p>         printf("%d %d\n", i, myval);
+<p>      }
+<p>   }
+<p>}
+<p>
+<p>More information on the topic can be found here:
+<p>(https://computing.llnl.gov/tutorials/openMP/#Introduction)
+
+
+			</center></p>
+
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>

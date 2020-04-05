@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>   Chapter 2       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Chapter 2 - Programming with C </h2></font>
+			<center><p>
+<h3>Some advantages of learning C programming:</h3>
+<p>Easy to learn
+<p>Structured Language
+<p>It produces efficient programs
+<p>It can handle low-level activities
+<p>It can be compiled on a variety of computer platforms.
+
+<h3>Facts about C:</h3>
+<p>C was invented to write an operating system called UNIX.
+<p>C is the successor of the language B, which was created in the early 1970’s.
+<p>C was formalized in 1988 by the American National Standard Institute (ANSI).
+<p>Today, C is the most widely used and popular System Programming Language.
+<p>Most of the state-of-the-art software have been implemented using C.
+<p>C was initially used for system development work, particularly the programs that make-up the operating system.
+<p>C was adopted as a system development language because it produces code that runs nearly as fast as the code written in assembly language. Some examples of the use of C are Operating systems, language compilers, assemblers, text editors, print spoolers, network drivers, modern programs, databases, and language interpreters.
+
+<h3>Setting up your environment:</h3>
+<p>To begin cording in C, you will need two things:
+<p>A text editor.
+<p>This is what you will use to type your program. A few examples are Windows Notepad, OS Edit command, Brief, Epsiolon, EMACS, and vim or vi. The files you create with the text editor are called your source files and they contain the program you wrote. The source files for C programs are usually named with the extension “.c”.
+<p>The C Compiler.
+<p>Simply put, the source code you write is meant to be read by humans. A compiler is then used to translate what you wrote into machine language so the CPU can execute the program. A compiler compiles source code into final executable programs. The most frequently used compilers are the SNU C/C++ compiler.
+
+<h3>Data Types</h3>
+
+<p>Data types in C refer to a system of declaring variables or functions of different types. The type of variable is what determines how much space is allotted in storage and how the bit pattern stored is interpreted.
+<p>There are 4 types of types, and they are as follows:
+<p>Basic Types, which include arithmetic types and are further classified into integer types and floating-point types.
+<p>Enumerated types, which are also arithmetic types and are used to define variables that can only assign certain discrete integer values throughout the program.
+<p>The Type Void, which simply indicates that there is no value.
+<p>Derived Types, which include pointer types, array types, structure types, union types, and function types.
+<p>Integer Types
+<p>The following table provides the details of standard integer types with their storage sizes and range of values:
+<center><img  src="2.png"/>
+
+<p>Floating-Point Types
+<p>The following table provide the details of standard floating-point types with storage sizes and value ranges and their precision:
+<center><img  src="3.png"/>
+
+<h3>Variables</h3>
+
+<p>A variable is nothing but a name given to a storage area that our programs can manipulate. Each variable in C has a specific type, which determines the size and layout of the variable's memory; the range of values that can be stored within that memory; and the set of operations that can be applied to the variable.
+The name of a variable can be composed of letters, digits, and the underscore character. It must begin with either a letter or an underscore. Upper and lowercase letters are distinct because C is case-sensitive. Based on the basic types explained in the previous chapter, there will be the following basic variable types:
+<p>Char: Typically a single byte. This is an integer type.
+<p>Int: The most natural size of integer for the machine.
+<p>Float: A single-precision floating point value.
+<p>Double: A double-precision floating point value.
+<p>Void: Represents the absence of a type.
+
+<h3>Variable Definition in C</h3>
+<p>A variable definition tells the compiler where and how much storage to create for the variable. A variable definition specifies a data type and contains a list of one or more variables of that type as follows −
+<p>type variable_list;
+<p>Here, type must be a valid C data type including char, w_char, int, float, double, bool, or any user-defined object; and variable_list may consist of one or more identifier names separated by commas. Some valid declarations are shown here −
+<p>int    i, j, k;
+<p>char   c, ch;
+<p>float  f, salary;
+<p>double d;
+<p>The line int i, j, k; declares and defines the variables i, j, and k; which instruct the compiler to create variables named i, j and k of type int.
+<p>Variables can be initialized (assigned an initial value) in their declaration. The initializer consists of an equal sign followed by a constant expression as follows −
+<p>type variable_name = value;
+<p>Some examples are −
+<p><p>extern int d = 3, f = 5;    // declaration of d and f. 
+<p>int d = 3, f = 5;           // definition and initializing d and f. 
+<p>byte z = 22;                // definition and initializes z. 
+<p>char x = 'x';               // the variable x has the value 'x'.
+<p>For definition without an initializer: variables with static storage duration are implicitly initialized with NULL (all bytes have the value 0); the initial value of all other variables are undefined.
+
+<h3>Variable Declaration in C</h3>
+<p>A variable declaration provides assurance to the compiler that there exists a variable with the given type and name so that the compiler can proceed for further compilation without requiring the complete detail about the variable. A variable definition has its meaning at the time of compilation only, the compiler needs actual variable definition at the time of linking the program.
+<p>A variable declaration is useful when you are using multiple files and you define your variable in one of the files which will be available at the time of linking of the program. You will use the keyword extern to declare a variable at any place. Though you can declare a variable multiple times in your C program, it can be defined only once in a file, a function, or a block of code.
+<p>Consider the following example program:
+<p>#include <stdio.h>
+<p>
+<p>// Variable declaration:
+<p>extern int a, b;
+<p>extern int c;
+<p>extern float f;
+<p>
+<p>int main () {
+<p>
+<p>   /* variable definition: */
+<p>   int a, b;
+<p>   int c;
+<p>   float f;
+<p> 
+<p>   /* actual initialization */
+<p>   a = 10;
+<p>   b = 20;
+<p>  
+<p>   c = a + b;
+<p>   printf("value of c : %d \n", c);
+<p>
+<p>   f = 70.0/3.0;
+<p>   printf("value of f : %f \n", f);
+<p> 
+<p>   return 0;
+<p>}
+<p>This program will produce the following result:
+<p>value of c : 30
+<p>value of f : 23.333334
+
+<p>The same concept applies on function declaration where you provide a function name at the time of its declaration and its actual definition can be given anywhere else. For example −
+<p>// function declaration
+<p>int func();
+<p>
+<p>int main() {
+<p>
+<p>   // function call
+<p>   int i = func();
+<p>}
+<p>
+<p>// function definition
+<p>int func() {
+<p>   return 0;
+<p>}
+
+<p>Constants
+<p>Constants refer to fixed values that the program may not alter during its execution. These fixed values are also called literals.
+<p>Constants can be of any of the basic data types like an integer constant, a floating constant, a character constant, or a string literal. There are enumeration constants as well.
+<p>Constants are treated just like regular variables except that their values cannot be modified after their definition.
+
+<h3>Character Constants</h3>
+<p>Character literals are enclosed in single quotes, e.g., 'x' can be stored in a simple variable of char type.
+<p>A character literal can be a plain character (e.g., 'x'), an escape sequence (e.g., '\t'), or a universal character (e.g., '\u02C0').
+<p>There are certain characters in C that represent special meaning when preceded by a backslash for example, newline (\n) or tab (\t).
+<p>Here is a list of such Escape sequences:
+<p>\\ : \ character
+<p>\' : ' character
+<p>\" : " character
+<p>\? : ? character
+<p>\a : Alert or bell
+<p>\b : Backspace
+<p>\f : Form feed
+<p>\n : Newline
+<p>\r : Carriage return
+<p>\t : Horizontal tab
+<p>\v : Vertical tab
+<p>\ooo : Octal number of one to three digits
+<p>\xhh . . . : Hexadecimal number of one or more digits
+
+<h3>Defining Constants</h3>
+<p>There are two simple ways in C to define constants −
+<p><b>The #define Preprocessor:</b>
+
+<p>Given below is the form to use #define preprocessor to define a constant −
+<p>#define identifier value
+<p>The following example explains it in detail −
+<p>#include <stdio.h>
+<p>
+<p>#define LENGTH 10   
+<p>#define WIDTH  5
+<p>#define NEWLINE '\n'
+<p>
+<p>int main() {
+<p>   int area;  
+<p>  
+<p>   area = LENGTH * WIDTH;
+<p>   printf("value of area : %d", area);
+<p>   printf("%c", NEWLINE);
+<p>
+<p>   return 0;
+<p>}
+<p>When the above code is compiled and executed, it produces the following result −
+<p>value of area : 50
+
+<p><b>The const Keyword:</b>
+<p>You can use const prefix to declare constants with a specific type as follows −
+<p>const type variable = value;
+<p>The following example explains it in detail −
+<p>#include <stdio.h>
+<p>
+<p>int main() {
+<p>   const int  LENGTH = 10;
+<p>   const int  WIDTH = 5;
+<p>   const char NEWLINE = '\n';
+<p>   int area;  
+<p>   
+<p>   area = LENGTH * WIDTH;
+<p>   printf("value of area : %d", area);
+<p>   printf("%c", NEWLINE);
+<p>
+<p>   return 0;
+<p>}
+<p>When the above code is compiled and executed, it produces the following result −
+<p>value of area : 50
+
+
+<h3>Operators</h3>
+
+<p>An operator is a symbol that tells the compiler to perform specific mathematical or logical functions. C language is rich in built-in operators and provides the following types of operators −
+
+<p><b>Arithmetic Operators</b>
+<p>The following table shows all the arithmetic operators supported by the C language. Assume variable A holds 10 and variable B holds 20 then –
+ <center><img  src="4.png"/>
+<p><b>Relational Operators</b>
+<p>The following table shows all the relational operators supported by C. Assume variable A holds 10 and variable B holds 20 then −
+ <center><img  src="5.png"/>
+<p><b>Logical Operators</b>
+<p>Following table shows all the logical operators supported by C language. Assume variable A holds 1 and variable B holds 0, then –
+ <center><img  src="6.png"/>
+
+<p><b>Bitwise Operators</b>
+<p>Bitwise operator works on bits and perform bit-by-bit operation. The following table lists the bitwise operators supported by C. Assume variable 'A' holds 60 and variable 'B' holds 13, then −
+ <center><img  src="7.png"/>
+<p><b>Assignment Operators</b>
+<p>The following table lists the assignment operators supported by the C language –
+ <center><img  src="8.png"/>
+<p><b>Operators Precedence in C</b>
+<p>Operator precedence determines the grouping of terms in an expression and decides how an expression is evaluated. Certain operators have higher precedence than others; for example, the multiplication operator has a higher precedence than the addition operator.
+<p>For example, x = 7 + 3 * 2; here, x is assigned 13, not 20 because operator * has a higher precedence than +, so it first gets multiplied with 3*2 and then adds into 7.
+<p>Here, operators with the highest precedence appear at the top of the table, those with the lowest appear at the bottom. Within an expression, higher precedence operators will be evaluated first.
+<center><img  src="9.png"/>
+<p>More information on the topic can be found below:
+
+<p>(https://www.tutorialspoint.com/cprogramming/index.html)
+
+
+
+			</center></p>
+
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>    Chapter 6       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Chapter 6 - OpenMP Directives </h2></font>
+			<center><p>
+<p>Compiler directives appear as comments in your source code and are ignored by compilers unless you tell them otherwise - usually by specifying the appropriate compiler flag, as discussed in the Compiling section later. 
+<p><b>OpenMP compiler directives are used for various purposes: </b>
+<p>	Spawning a parallel region 
+<p>	Dividing blocks of code among threads 
+<p>	Distributing loop iterations between threads 
+<p>	Serializing sections of code 
+<p>	Synchronization of work among threads 
+<p><b>Compiler directives have the following syntax: </b>
+<p>sentinel       directive-name      [clause, ...]
+<p><b>For example (C/C++):</b>
+<p>#pragma omp parallel default(shared) private(beta,pi)
+<p>
+<p><h3>The parallel directive</h3>
+<p>This directive defines a parallel region, which is code that will be executed by multiple threads in parallel. The following is an example of the parallel directive in C++:
+<p>// omp_parallel.cpp
+<p>// compile with: /openmp
+<p>#include <stdio.h>
+<p>#include <omp.h>
+
+<p>int main() {
+<p>   #pragma omp parallel num_threads(4)
+<p>   {
+<p>      int i = omp_get_thread_num();
+<p>      printf_s("Hello from thread %d\n", i);
+<p>   }
+<p>}
+<p>This is the output from the code above:
+<p>Hello from thread 0
+<p>Hello from thread 1
+<p>Hello from thread 2
+<p>Hello from thread 3
+
+<p><h3>For Directive</h3>
+<p>This directive causes the work done in a for loop inside a parallel region to be divided among threads. This is what the directive might look like in C++:
+<p>#pragma omp [parallel] for [clauses]
+<p>   for_statement
+<p>If parallel is also specified, clauses can be any clause accepted by the parallel or for directives, except nowait.
+
+<p><h3>Sections Directive</h3>
+<p>This directive identifies code sections to be divided among all threads. For example, this directive in C++ might look like this:
+<p>// omp_sections.cpp
+<p>// compile with: /openmp
+<p>#include <stdio.h>
+<p>#include <omp.h>
+<p>
+<p>int main() {
+<p>    #pragma omp parallel sections num_threads(4)
+<p>    {
+<p>        printf_s("Hello from thread %d\n", omp_get_thread_num());
+<p>        #pragma omp section
+<p>        printf_s("Hello from thread %d\n", omp_get_thread_num());
+<p>    }
+<p>}
+<p><p><p>The output for the code above would be the following:
+<p><p>Hello from thread 0
+<p><p>Hello from thread 0
+<p>
+<p><h3>Parallel For Directive</h3>
+<p><p>This directive is a combination of the parallel directive and the for directive. Below is example code, demonstrating this directive:
+<p> #include <omp.h>
+<p> #define N       1000
+<p> #define CHUNKSIZE   100
+<p>
+<p> main(int argc, char *argv[]) {
+<p>
+<p> int i, chunk;
+<p> float a[N], b[N], c[N];
+<p>
+<p> /* Some initializations */
+<p> for (i=0; i < N; i++)
+<p>   a[i] = b[i] = i * 1.0;
+<p> chunk = CHUNKSIZE;
+<p>
+<p> #pragma omp parallel for \
+<p>   shared(a,b,c,chunk) private(i) \
+<p>   schedule(static,chunk)
+<p>   for (i=0; i < N; i++)
+<p>     c[i] = a[i] + b[i];
+<p> }
+<p>
+<p><h3>Parallel Sections Directive</h3>
+<p><p>The parallel sections directive provides a shortcut form for specifying a parallel region that has only a single sections directive. The semantics are the same as explicitly specifying a parallel directive immediately followed by a sections directive. The syntax of the parallel sections directive is as follows:
+<p>#pragma omp parallel sections  [clause[[,] clause] ...] new-line
+<p>   {
+<p>   [#pragma omp section new-line]
+<p>      structured-block
+<p>   [#pragma omp section new-linestructured-block  ]
+<p>   ...
+<p>}
+<p>
+<p>
+<p><h3>Environment Variables: </h3>
+<p><b>OpenMP provides several environment variables for controlling the execution of parallel code at run-time. These environment variables can be used to control such things as: </b>
+<p>	Setting the number of threads 
+<p>	Specifying how loop iterations are divided 
+<p>	Binding threads to processors 
+<p>	Enabling/disabling nested parallelism; setting the maximum levels of nested parallelism 
+<p>	Enabling/disabling dynamic threads 
+<p>	Setting thread stack size 
+<p>	Setting thread wait policy 
+<p><b>Setting OpenMP environment variables is done the same way you set any other environment variables and depends upon which shell you use. For example: </b>
+<p>csh/tcsh
+<p>setenv OMP_NUM_THREADS 8
+<p>sh/bash
+<p>export OMP_NUM_THREADS=8
+<p>
+<p><p>Below is an example of OpenMP code structure in (C/C++):
+<p>#include <omp.h>
+<p>   main ()  {
+<p>   int var1, var2, var3;
+<p>   Serial code 
+<p>         .
+<p>         .
+<p>         .
+<p>   Beginning of parallel region. Fork a team of threads.
+<p>   Specify variable scoping 
+<p>   #pragma omp parallel private(var1, var2) shared(var3)
+<p>      {
+<p>      Parallel region executed by all threads 
+<p>                 .
+<p>      Other OpenMP directives
+<p>                 .
+<p>      Run-time Library calls
+<p>                 .
+<p>      All threads join master thread and disband 
+<p>      }  
+<p>   Resume serial code 
+<p>         .
+<p>         .
+<p>         .
+<p>   }
+<p>
+<p>
+<p><h3>C/C++ Directives Format</h3>
+<p> <center><img  src="16.png"/>
+<p><p>Example: #pragma omp parallel default(shared) private(beta,pi)
+<p>
+<p><b>These are the general rules:</b>
+<p><p>Case sensitive 
+<p><p>Directives follow conventions of the C/C++ standards for compiler directives 
+<p><p>Only one directive-name may be specified per directive 
+<p><p>Each directive applies to at most one succeeding statement, which must be a structured block. 
+<p><p>Long directive lines can be "continued" on succeeding lines by escaping the newline character with a backslash ("\") at the end of a directive line.
+<p><b>More information on the subject can be found at:</b>
+<p><p>(https://docs.microsoft.com/en-us/cpp/parallel/openmp/reference/openmp-directives?view=vs-2019#sections-openmp)
+<p>
+
+
+			</center></p>
+
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>

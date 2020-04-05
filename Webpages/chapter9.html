@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>    Chapter 9       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Chapter 9 - Introduction to MPI </h2></font>
+			<center><p>
+<p>The Message Passing Interface Standard (MPI) is a message passing library standard based on the consensus of the MPI Forum, which has over 40 participating organizations, including vendors, researchers, software library developers, and users. The goal of the Message Passing Interface is to establish a portable, efficient, and flexible standard for message passing that will be widely used for writing message passing programs. As such, MPI is the first standardized, vendor independent, message passing library. The advantages of developing message passing software using MPI closely match the design goals of portability, efficiency, and flexibility. MPI is not an IEEE or ISO standard, but has in fact, become the "industry standard" for writing message passing programs on HPC platforms.
+<p>MPI is a specification for the developers and users of message passing libraries. By itself, it is NOT a library - but rather the specification of what such a library should be. 
+<p>MPI primarily addresses the message-passing parallel programming model: data is moved from the address space of one process to that of another process through cooperative operations on each process. 
+<p>Simply stated, the goal of the Message Passing Interface is to provide a widely used standard for writing message passing programs. The interface attempts to be practical, portable, efficient, and flexible.
+<p>The MPI standard has gone through a number of revisions, with the most recent version being MPI-3.x  
+<p>Actual MPI library implementations differ in which version and features of the MPI standard they support.
+<p>
+<p><h3>Programming Model: </h3>
+<p><p>Originally, MPI was designed for distributed memory architectures, which were becoming increasingly popular at that time (1980s - early 1990s). 
+<p> <center><img  src="21.png"/>
+<p><p>As architecture trends changed, shared memory SMPs were combined over networks creating hybrid distributed memory / shared memory systems. 
+<p><p>MPI implementors adapted their libraries to handle both types of underlying memory architectures seamlessly. They also adapted/developed ways of handling different interconnects and protocols. 
+<p> <center><img  src="22.png"/>
+<p><b>Today, MPI runs on virtually any hardware platform: </b>
+<p>Distributed Memory 
+<p>Shared Memory 
+<p>Hybrid 
+<p>The programming model clearly remains a distributed memory model however, regardless of the underlying physical architecture of the machine. All parallelism is explicit: the programmer is responsible for correctly identifying parallelism and implementing parallel algorithms using MPI constructs. 
+<p>
+<p><b>Reasons for Using MPI: </b>
+<p><p>Standardization - MPI is the only message passing library that can be considered a standard. It is supported on virtually all HPC platforms. Practically, it has replaced all previous message passing libraries.
+<p><p>Portability - There is little or no need to modify your source code when you port your application to a different platform that supports (and is compliant with) the MPI standard. 
+<p><p>Performance Opportunities - Vendor implementations should be able to exploit native hardware features to optimize performance. Any implementation is free to develop optimized algorithms. 
+<p><p>Functionality - There are over 430 routines defined in MPI-3, which includes the majority of those in MPI-2 and MPI-1. 
+<p><p>Availability - A variety of implementations are available, both vendor and public domain. 
+<p>
+<p>
+<p><h3>MPI Functions</h3>
+<p>
+<p><h3>MPI_Init()</h3>
+<p><p>This function is used to initialize the MPI execution environment. This routine must be called before any other MPI routine. It must be called at most once; subsequent calls are erroneous. For example:
+<p>int MPI_Init(
+<p>  int *argc,
+<p>  char ***argv
+<p>);
+<p>int MPI_Init(
+<p>  int *argc,
+<p>  wchar_t ***argv
+<p>);
+<p>
+<p><h3>MPI_Finalize()</h3>
+<p><p>This function terminates the MPI execution environment.
+<p>int MPI_Finalize( void );
+<p>This routine cleans up all MPI state. Once this routine is called, no MPI routine (even MPI_INIT) may be called. The user must ensure that all pending communications involving a process completes before the process calls MPI_FINALIZE. 
+<p>All processes must call this routine before exiting. The number of processes running after this routine is called is undefined; it is best not to perform much more than a return rc after calling MPI_Finalize.
+<p>
+<p><h3>MPI_Comm_size()</h3>
+<p><p>This function determines the size of the group associated with a communicator.
+<p>int MPI_Comm_size(
+<p>  MPI_Comm comm,
+<p>  int *size
+<p>);
+<p>
+<p><h3>MPI_Comm_rank()</h3>
+<p><p>This function indicates the rank of the process that calls it in the range from  size-1, where size is the return value of MPI_COMM_SIZE.
+<p>int MPI_Comm_rank(
+<p>  MPI_Comm comm,
+<p>  int *rank
+<p>);
+<p>
+<p><h3>MPI_Send()</h3>
+<p><p>This function performs a blocking send. It may block until the message is received by the destination process.
+<p>int MPI_Send(
+<p>  void *buf,
+<p>  int count,
+<p>  MPI_Datatype datatype,
+<p>  int dest,
+<p>  int tag,
+<p>  MPI_Comm comm
+<p>);
+<p><b>Parameters:</b>
+<p><p>buf 
+<p><p>	[in] initial address of send buffer (choice) 
+<p><p>count 
+<p><p>	[in] number of elements in send buffer (nonnegative integer) 
+<p><p>datatype 
+<p><p>	[in] datatype of each send buffer element (handle) 
+<p><p>dest 
+<p><p>	[in] rank of destination (integer) 
+<p><p>tag 
+<p><p>	[in] message tag (integer) 
+<p><p>comm 
+<p><p>	[in] communicator (handle) 
+<p>
+<p><h3>MPI_Recv()</h3>
+<p><p>This function performs a blocking receive for a message. The receive buffer consists of the storage containing count consecutive elements of the type specified by datatype, starting at address buf. The length of the received message must be less than or equal to the length of the receive buffer. An overflow error occurs if all incoming data does not fit, without truncation, into the receive buffer.
+<p>int MPI_Recv(
+<p>  void *buf,
+<p>  int count,
+<p>  MPI_Datatype datatype,
+<p>  int source,
+<p>  int tag,
+<p>  MPI_Comm comm,
+<p>  MPI_Status *status
+<p>);
+<p><b>Parameters</b>
+<p>buf 
+<p>	[out] initial address of receive buffer (choice) 
+<p>count 
+<p>	[in] maximum number of elements in receive buffer (integer) 
+<p>datatype 
+<p>	[in] datatype of each receive buffer element (handle) 
+<p>source 
+<p>	[in] rank of source (integer) 
+<p>tag 
+<p>	[in] message tag (integer) 
+<p>comm 
+<p>	[in] communicator (handle) 
+<p>status 
+<p>	[out] status object (Status)
+
+<p><b>More information can be found here:</b>
+<p>(https://computing.llnl.gov/tutorials/mpi/)
+
+
+
+			</center></p>
+
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>

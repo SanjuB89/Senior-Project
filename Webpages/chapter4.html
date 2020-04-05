@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>    Chapter 4       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Chapter 4 - Programming with C - Part 3 </h2></font>
+			<center>
+<h3>Functions</h3>
+<p>A function is a group of statements that together perform a task. Every C program has at least one function, which is main(), and all the most trivial programs can define additional functions.
+<p>You can divide up your code into separate functions. How you divide up your code among different functions is up to you, but logically the division is such that each function performs a specific task.
+<p>A function declaration tells the compiler about a function's name, return type, and parameters. A function definition provides the actual body of the function.
+<p>The C standard library provides numerous built-in functions that your program can call. For example, strcat() to concatenate two strings, memcpy() to copy one memory location to another location, and many more functions.
+<p>A function can also be referred as a method or a sub-routine or a procedure, etc.
+<p>
+<p><b>Defining a Function</b>
+<p>The general form of a function definition in C programming language is as follows −
+<p>return_type function_name( parameter list ) {
+<p>   body of the function
+<p>}
+<p><p>A function definition in C programming consists of a function header and a function body. Here are all the parts of a function −
+<p>Return Type − A function may return a value. The return_type is the data type of the value the function returns. Some functions perform the desired operations without returning a value. In this case, the return_type is the keyword void.
+<p>Function Name − This is the actual name of the function. The function name and the parameter list together constitute the function signature.
+<p>Parameters − A parameter is like a placeholder. When a function is invoked, you pass a value to the parameter. This value is referred to as actual parameter or argument. The parameter list refers to the type, order, and number of the parameters of a function. Parameters are optional; that is, a function may contain no parameters.
+<p>Function Body − The function body contains a collection of statements that define what the function does.
+<p>
+<p><p>Given below is the source code for a function called max(). This function takes two parameters num1 and num2 and returns the maximum value between the two −
+<p>/* function returning the max between two numbers */
+<p>int max(int num1, int num2) {
+<p>
+<p>   /* local variable declaration */
+<p>   int result;
+<p> 
+<p>   if (num1 > num2)
+<p>      result = num1;
+<p>   else
+<p>      result = num2;
+<p> 
+<p>   return result; 
+<p>}
+<p>
+<p><b>Function Declarations</b>
+<p><p>A function declaration tells the compiler about a function name and how to call the function. The actual body of the function can be defined separately.
+<p>A function declaration has the following parts −
+<p>return_type function_name( parameter list );
+<p>For the above defined function max(), the function declaration is as follows −
+<p>int max(int num1, int num2);
+<p>Parameter names are not important in function declaration only their type is required, so the following is also a valid declaration −
+<p>int max(int, int);
+<p>Function declaration is required when you define a function in one source file and you call that function in another file. In such case, you should declare the function at the top of the file calling the function.
+<p>
+<p><b>Calling a Function</b>
+<p><p>While creating a C function, you give a definition of what the function has to do. To use a function, you will have to call that function to perform the defined task.
+<p>When a program calls a function, the program control is transferred to the called function. A called function performs a defined task and when its return statement is executed or when its function-ending closing brace is reached, it returns the program control back to the main program.
+<p>To call a function, you simply need to pass the required parameters along with the function name, and if the function returns a value, then you can store the returned value. For example −
+<p>#include <stdio.h>
+<p> 
+<p>/* function declaration */
+<p>int max(int num1, int num2);
+<p> 
+<p>int main () {
+<p>
+<p>   /* local variable definition */
+<p>   int a = 100;
+<p>   int b = 200;
+<p>   int ret;
+<p> 
+<p>   /* calling a function to get max value */
+<p>   ret = max(a, b);
+<p> 
+<p>   printf( "Max value is : %d\n", ret );
+<p> 
+<p>   return 0;
+<p>}
+<p> 
+<p>/* function returning the max between two numbers */
+<p>int max(int num1, int num2) {
+<p>
+<p>   /* local variable declaration */
+<p>   int result;
+<p> 
+<p>   if (num1 > num2)
+<p>      result = num1;
+<p>   else
+<p>      result = num2;
+<p> 
+<p>   return result; 
+<p>}
+<p><p>We have kept max() along with main() and compiled the source code. While running the final executable, it would produce the following result −
+<p><p>Max value is : 200
+<p>
+<p><b>Function Arguments</b>
+<p><p>If a function is to use arguments, it must declare variables that accept the values of the arguments. These variables are called the formal parameters of the function.
+<p>Formal parameters behave like other local variables inside the function and are created upon entry into the function and destroyed upon exit.
+<p>While calling a function, there are two ways in which arguments can be passed to a function −
+<p>Call by value 
+<p>This method copies the actual value of an argument into the formal parameter of the function. In this case, changes made to the parameter inside the function have no effect on the argument.
+<p>Call by reference 
+<p>This method copies the address of an argument into the formal parameter. Inside the function, the address is used to access the actual argument used in the call. This means that changes made to the parameter affect the argument.
+<p>
+<p><p>By default, C uses call by value to pass arguments. In general, it means the code within a function cannot alter the arguments used to call the function.
+<p>
+<p>
+<p><h3>Arrays</h3>
+<p>
+<p><p>An array is a kind of data structure that can store a fixed-size sequential collection of elements of the same type. An array is used to store a collection of data, but it is often more useful to think of an array as a collection of variables of the same type.
+<p>Instead of declaring individual variables, such as number0, number1, ..., and number99, you declare one array variable such as numbers and use numbers[0], numbers[1], and ..., numbers[99] to represent individual variables. A specific element in an array is accessed by an index.
+<p>All arrays consist of contiguous memory locations. The lowest address corresponds to the first element and the highest address to the last element.
+<p> 
+<p><b>Declaring Arrays</b>
+<p><p>To declare an array in C, a programmer specifies the type of the elements and the number of elements required by an array as follows −
+<p>type arrayName [ arraySize ];
+<p>This is called a single-dimensional array. The arraySize must be an integer constant greater than zero and type can be any valid C data type. For example, to declare a 10-element array called balance of type double, use this statement −
+<p>double balance[10];
+<p>Here balance is a variable array which can hold up to 10 double numbers.
+<p>
+<p><b>Initializing Arrays</b>
+<p><p>You can initialize an array in C either one by one or using a single statement as follows −
+<p>double balance[5] = {1000.0, 2.0, 3.4, 7.0, 50.0};
+<p>The number of values between braces { } cannot be larger than the number of elements that we declare for the array between square brackets [ ].
+<p>If you omit the size of the array, an array just big enough to hold the initialization is created. Therefore, if you write −
+<p>double balance[] = {1000.0, 2.0, 3.4, 7.0, 50.0};
+<p>You will create exactly the same array as you did in the previous example. Following is an example to assign a single element of the array −
+<p>balance[4] = 50.0;
+<p>The above statement assigns the 5th element in the array with a value of 50.0. All arrays have 0 as the index of their first element which is also called the base index and the last index of an array will be total size of the array minus 1. Shown below is the pictorial representation of the array we discussed above –
+<p> <center><img  src="12.png"/>
+<p>
+<p><b>Accessing Array Elements</b>
+<p><p>An element is accessed by indexing the array name. This is done by placing the index of the element within square brackets after the name of the array. For example −
+<p>double salary = balance[9];
+<p>The above statement will take the 10th element from the array and assign the value to salary variable. The following example shows how to use all the three above mentioned concepts… declaration, assignment, and accessing arrays −
+<p>#include <stdio.h>
+<p> 
+<p>int main () {
+<p>
+<p>   int n[ 10 ]; /* n is an array of 10 integers */
+<p>   int i,j;
+<p> 
+<p>   /* initialize elements of array n to 0 */         
+<p>   for ( i = 0; i < 10; i++ ) {
+<p>      n[ i ] = i + 100; /* set element at location i to i + 100 */
+<p>   }
+<p>   
+<p>   /* output each array element's value */
+<p>   for (j = 0; j < 10; j++ ) {
+<p>      printf("Element[%d] = %d\n", j, n[j] );
+<p>   }
+<p> 
+<p>   return 0;
+<p>}
+<p><p>When the above code is compiled and executed, it produces the following result −
+<p><p>Element[0] = 100
+<p><p>Element[1] = 101
+<p><p>Element[2] = 102
+<p><p>Element[3] = 103
+<p><p>Element[4] = 104
+<p><p>Element[5] = 105
+<p><p>Element[6] = 106
+<p><p>Element[7] = 107
+<p><p>Element[8] = 108
+<p><p>Element[9] = 109
+<p>
+<p><b>Arrays in Detail</b>
+<p><p>Arrays are important to C and should need a lot more attention. The following important concepts related to array should be clear to a C programmer −
+<p><b>Multi-dimensional arrays :</b>
+<p>C supports multidimensional arrays. The simplest form of the multidimensional array is the two-dimensional array.
+<p><b>Passing arrays to functions :</b>
+<p>You can pass to the function a pointer to an array by specifying the array's name without an index.
+<p><b>Return array from a function :</b>
+<p>C allows a function to return an array.
+<p><b>Pointer to an array :</b>
+<p>You can generate a pointer to the first element of an array by simply specifying the array name, without any index.
+<p>
+<p>
+<p>
+<p><h3>Strings</h3>
+<p>
+<p><p>Strings are actually a one-dimensional array of characters terminated by a null character '\0'. Thus, a null-terminated string contains the characters that comprise the string followed by a null.
+<p>The following declaration and initialization create a string consisting of the word "Hello". To hold the null character at the end of the array, the size of the character array containing the string is one more than the number of characters in the word "Hello."
+<p>char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+<p>If you follow the rule of array initialization then you can write the above statement as follows −
+<p>char greeting[] = "Hello";
+<p>
+<p><p>Following is the memory presentation of the above defined string in C/C++ :
+<p>  
+<p><center><img  src="13.png"/>
+<p><p>You do not place the null character at the end of a string constant. The C compiler automatically places the '\0' at the end of the string when it initializes the array. Let us try to print the above mentioned string −
+<p>#include <stdio.h>
+<p>
+<p>int main () {
+<p>
+<p>   char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+<p>   printf("Greeting message: %s\n", greeting );
+<p>   return 0;
+<p>}
+<p><p>When the above code is compiled and executed, it produces the following result −
+<p>Greeting message: Hello
+<p>
+<p><p><p>C supports a wide range of functions that manipulate null-terminated strings −
+<p><b>strcpy(s1, s2);</b>
+<p>	Copies string s2 into string s1.
+<p><b>strcat(s1, s2);</b>
+<p>	Concatenates string s2 onto the end of string s1.
+<p><b>strlen(s1);</b>
+<p>	Returns the length of string s1.
+<p><b>strcmp(s1, s2);</b>
+<p>	Returns 0 if s1 and s2 are the same; less than 0 if s1<s2; greater than 0 if s1>s2.
+<p><b>strchr(s1, ch);</b>
+<p>	Returns a pointer to the first occurrence of character ch in string s1.
+<p><b>strstr(s1, s2);</b>
+<p>	Returns a pointer to the first occurrence of string s2 in string s1.
+<p>
+<p><p>The following example uses some of the above-mentioned functions −
+<p>#include <stdio.h>
+<p>#include <string.h>
+<p>
+<p>int main () {
+<p>
+<p>   char str1[12] = "Hello";
+<p>   char str2[12] = "World";
+<p>   char str3[12];
+<p>   int  len ;
+<p>
+<p>   /* copy str1 into str3 */
+<p>   strcpy(str3, str1);
+<p>   printf("strcpy( str3, str1) :  %s\n", str3 );
+<p>
+<p>   /* concatenates str1 and str2 */
+<p>   strcat( str1, str2);
+<p>   printf("strcat( str1, str2):   %s\n", str1 );
+<p>
+<p>   /* total lenghth of str1 after concatenation */
+<p>   len = strlen(str1);
+<p>   printf("strlen(str1) :  %d\n", len );
+<p>
+<p>   return 0;
+<p>}
+<p><p>When the above code is compiled and executed, it produces the following result −
+<p>strcpy( str3, str1) :  Hello
+<p>strcat( str1, str2):   HelloWorld
+<p>strlen(str1) :  10
+<p>
+<p>
+<p>(https://www.tutorialspoint.com/cprogramming/index.html)
+
+
+
+			</center></p>
+
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>

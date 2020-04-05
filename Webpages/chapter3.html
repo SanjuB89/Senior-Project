@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>    Chapter 3       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Chapter 3 - Programming with C - Part 2 </h2></font>
+			<center><p>
+			Decision making structures require that the programmer specifies one or more conditions to be evaluated or tested by the program, along with a statement or statements to be executed if the condition is determined to be true, and optionally, other statements to be executed if the condition is determined to be false.
+<p>Shown below is the general form of a typical decision-making structure found in most of the programming languages −
+ <center><img  src="10.png"/>
+ 
+
+<p>C programming language assumes any non-zero and non-null values as true, and if it is either zero or null, then it is assumed as false value.
+<center><img  src="11.png"/>
+<p>C programming language provides the following types of decision making statements.
+<p><b>if statement :</b>
+<p>An if statement consists of a Boolean expression followed by one or more statements.
+<p><b>if...else statement :</b>
+<p>An if statement can be followed by an optional else statement, which executes when the Boolean expression is false.
+<p><b>nested if statements :</b>
+<p>You can use one if or else if statement inside another if or else if statement(s).
+<p><b>switch statement :</b>
+<p>A switch statement allows a variable to be tested for equality against a list of values.
+<p><b>nested switch statements :</b>
+<p>You can use one switch statement inside another switch statement(s).
+
+<h3>The ? : Operator</h3> 
+<p>The ? : Operator can be used to replace if/else statements, for example:
+<p>Exp1 ? Exp2 : Exp3;
+<p>Where Exp1, Exp2, and Exp3 are expressions.
+<p>The value of a ? expression is determined like this −
+<p>Exp1 is evaluated. If it is true, then Exp2 is evaluated and becomes the value of the entire ? expression.
+<p>If Exp1 is false, then Exp3 is evaluated and its value becomes the value of the expression.
+
+
+<h3>Loops</h3>
+
+<p>You may encounter situations, when a block of code needs to be executed any number of times. In general, statements are executed sequentially: The first statement in a function is executed first, followed by the second, and so on.
+<p>Programming languages provide various control structures that allow for more complicated execution paths.
+<p>A loop statement allows us to execute a statement or group of statements multiple times. Given below is the general form of a loop statement in most of the programming languages −
+ 
+
+<p>C programming language provides the following types of loops to handle looping requirements.
+<p><b>while loop </b>
+<p>Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.
+<p><b>for loop </b>
+<p>Executes a sequence of statements multiple times and abbreviates the code that manages the loop variable.
+<p><b>do...while loop </b>
+<p>It is more like a while statement, except that it tests the condition at the end of the loop body.
+<p><b>nested loops </b>
+<p>You can use one or more loops inside any other while, for, or do…while loop.
+
+<p>Loop control statements change execution from its normal sequence. When execution leaves a scope, all automatic objects that were created in that scope are destroyed.
+<p>C supports the following control statements:
+<p><b>break statement </b>
+<p>Terminates the loop or switch statement and transfers execution to the statement immediately following the loop or switch.
+<p><b>continue statement </b>
+<p>Causes the loop to skip the remainder of its body and immediately retest its condition prior to reiterating.
+<p><b>goto statement </b>
+<p>Transfers control to the labeled statement.
+
+<p>Finally, a loop becomes an infinite loop if a condition never becomes false. The for loop is traditionally used for this purpose. Since none of the three expressions that form the 'for' loop are required, you can make an endless loop by leaving the conditional expression empty.
+<p>#include <stdio.h>
+<p> 
+<p>int main () {
+<p>
+<p>   for( ; ; ) {
+<p>      printf("This loop will run forever.\n");
+<p>   }
+<p>
+<p>   return 0;
+<p>}
+<p>When the conditional expression is absent, it is assumed to be true. You may have an initialization and increment expression, but C programmers more commonly use the for(;;) construct to signify an infinite loop.
+
+
+
+
+
+
+
+<h3>Pointers</h3>
+
+<p>Pointers in C are easy and fun to learn. Some C programming tasks are performed more easily with pointers, and other tasks, such as dynamic memory allocation, cannot be performed without using pointers. So it becomes necessary to learn pointers to become a perfect C programmer. Let's start learning them in simple and easy steps.
+<p>Every variable is a memory location and every memory location has its address defined which can be accessed using ampersand (&) operator, which denotes an address in memory. Consider the following example, which prints the address of the variables defined −
+<p>#include <stdio.h>
+<p>
+<p>int main () {
+<p>
+<p>   int  var1;
+<p>   char var2[10];
+<p>
+<p>   printf("Address of var1 variable: %x\n", &var1  );
+<p>   printf("Address of var2 variable: %x\n", &var2  );
+<p>
+<p>   return 0;
+<p>}
+<p>When the above code is compiled and executed, it produces the following result −
+<p>Address of var1 variable: bff5a400
+<p>Address of var2 variable: bff5a3f6
+
+<p><b>What are Pointers?</b>
+<p>A pointer is a variable whose value is the address of another variable, i.e., direct address of the memory location. Like any variable or constant, you must declare a pointer before using it to store any variable address. The general form of a pointer variable declaration is −
+<p>type *var-name;
+<p>Here, type is the pointer's base type; it must be a valid C data type and var-name is the name of the pointer variable. The asterisk * used to declare a pointer is the same asterisk used for multiplication. However, in this statement the asterisk is being used to designate a variable as a pointer. Take a look at some of the valid pointer declarations - 
+<p>int    *ip;    /* pointer to an integer */
+<p>double *dp;    /* pointer to a double */
+<p>float  *fp;    /* pointer to a float */
+<p>char   *ch     /* pointer to a character */
+<p>The actual data type of the value of all pointers, whether integer, float, character, or otherwise, is the same, a long hexadecimal number that represents a memory address. The only difference between pointers of different data types is the data type of the variable or constant that the pointer points to.
+
+<p><b>How to Use Pointers?</b>
+<p>There are a few important operations, which we will do with the help of pointers very frequently.
+<p>(b) assign the address of a variable to a pointer and
+<p>(a) We define a pointer variable,
+<p>(c) finally access the value at the address available in the pointer variable. This is done by using unary operator * that returns the value of the variable located at the address specified by its operand.
+<p>The following example makes use of these operations –
+<p>#include <stdio.h>
+<p>
+<p>int main () {
+<p>
+<p>   int  var = 20;   /* actual variable declaration */
+<p>   int  *ip;        /* pointer variable declaration */
+<p>
+<p>   ip = &var;  /* store address of var in pointer variable*/
+<p>
+<p>   printf("Address of var variable: %x\n", &var  );
+<p>
+<p>   /* address stored in pointer variable */
+<p>   printf("Address stored in ip variable: %x\n", ip );
+<p>
+<p>   /* access the value using the pointer */
+<p>   printf("Value of *ip variable: %d\n", *ip );
+<p>
+<p>   return 0;
+<p>}
+<p><p>When the above code is compiled and executed, it produces the following result −
+<p>Address of var variable: bffd8b3c
+<p>Address stored in ip variable: bffd8b3c
+<p>Value of *ip variable: 20
+<p>
+<p><b>NULL Pointers</b>
+<p><p>It is always a good practice to assign a NULL value to a pointer variable in case you do not have an exact address to be assigned. This is done at the time of variable declaration. A pointer that is assigned NULL is called a null pointer.
+<p>The NULL pointer is a constant with a value of zero defined in several standard libraries. Consider the following program −
+<p>#include <stdio.h>
+<p>
+<p>int main () {
+<p>
+<p>   int  *ptr = NULL;
+<p>
+<p>   printf("The value of ptr is : %x\n", ptr  );
+<p> 
+<p>   return 0;
+<p>}
+<p><p>When the above code is compiled and executed, it produces the following result −
+<p>The value of ptr is 0
+<p>In most of the operating systems, programs are not permitted to access memory at address 0 because that memory is reserved by the operating system. However, the memory address 0 has special significance; it signals that the pointer is not intended to point to an accessible memory location. But by convention, if a pointer contains the null (zero) value, it is assumed to point to nothing.
+<p>To check for a null pointer, you can use an 'if' statement as follows −
+<p>if(ptr)     /* succeeds if p is not null */
+<p>if(!ptr)    /* succeeds if p is null */
+<p>
+<p>
+<p>(https://www.tutorialspoint.com/cprogramming/index.html)
+
+
+
+			</center></p>
+
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>

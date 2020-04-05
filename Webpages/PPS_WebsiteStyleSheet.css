@@ -1,0 +1,32 @@
+html
+
+
+.rightLinks
+{
+width: 102px;
+font-size:13px;
+font-weight:bold;
+line-height:21px;
+height:auto;
+margin-right:3px;
+background-image:url(links_branch.png);
+background-repeat:no-repeat;
+text-align:left;
+float:right;
+}
+
+.rightLinks a:hover
+{
+color:#667765;
+}
+
+
+
+.rightLinks .linkTitle
+{
+font-size:15px;
+font-weight:bold;
+margin-top:27px;
+margin-bottom:32px;
+margin-right:5px;
+}

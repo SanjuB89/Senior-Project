@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>    Chapter 1       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Welcome to Parallel Programming Class! </h2>
+			<h2>  Chapter 1 - Introduction to Parallel Programming </h2></font>
+			<center><p>
+			Parallel Computing is a type of computation where many calculations are performed at the same time.
+Basic Principle: computations can be divided into smaller subproblems, each of which can be solved simultaneously.
+
+<p>History: Parallel programming has existed since the early days of computers. IBM built some of the first commercial parallel computers in the 20th century.
+“For over a decade prophets have voiced the contention that the organization of a single computer has reached its limits and that truly significant advances can be made only by interconnection of a multiplicity of computers.” – Gene Amdahl, 1967
+
+<p>At the beginning of the 21st century, processor frequency scaling hit the power wall, which means the power required for the processer increases nonlinearly.
+So, processor vendors began selling multiple CPU cores on the same processor chip, each capacle of executing separate instruction streams.
+
+<p>Parallel programming is much harder than sequential programming,
+	Separating sequential computations into parallel sub computations can be challenging, or even 	impossible.
+	Ensuring program correctness is more difficult, due to new types of errors.
+
+<h3><b>Parallel programming vs concurrent programming</h3></b>
+<p>They are very closely related, but different.
+A parallel program uses parallel hardware to execute computations more quickly, with efficiency as its main concern. Parallel programming solves the problems of dividing problems into subproblems, and figuring the optimal use of parallel hardware
+A concurrent program is one that may or may not execute multiple executions at the same time. This improves modularity, responsiveness to events, and maintainability. Concurrent programming solves problems such as when can an execution start? And when and how can two concurrent executions share information. And how do computations manage access to shared resources?
+Parallel programming is mainly concerned with answering algorithmic problems such as applications of matrix multiplication, data processing, computer graphics rendering, or simulations of fluid movement.
+Concurrent programming is targeted at asynchronous applications such as web servers, user interfaces, or databases.
+The biggest concern with parallel programming is the speed of the programs, whereas with concurrent programming, the biggest concern is with convenience.
+
+
+<h3>Parallelism granularity levels</h3>
+<p><p><b>Bit level parallellism:</b>
+<p>Some microproccessors have historitically had a 4 bit word size. Number ranges that did not fit into the 4 bits, had to be represented by multiple words. This meant that variables in the 8 bit range have to be represneted by 8 bits, that is 2 words. Adding these two variables together required two seperare add instructions. Each operating on 4 bit words. Word size subsequently increased to 8 bit, then 16 bits, then eventually 32 bits. Each time this hapepned, several instructions could be replaced by a single one. This meant that processing more data in the same time interval, in event, preformance was improved by parallelizing operations on the bit level. 
+<p><b>Instruction level parallelism:</b>
+<p>This indicates executing different instructions from the same instruction stream in parallel. This can be done if both of the instructions do not depend on each other.
+<p>In this example,
+<p>Var a = 1 + 2
+<p>Var b = 4 + 5
+<p>Var c = a + b
+<p>There is no reason for a and b to not be computed at the same time because they are completely independent from each other. However, computing variable c can not be done in parallel with a or b because it depends on both of them.
+<p><b>Task level parallelism:</b>
+<p>Task level parallelism is the task of executing entirely separate instruction streams in parallel. Bit level and instruction level parallelism may be implemented into the processor itself. However, task level parallelism is usually achieved through the support of software.
+
+<center><img  src="1.png"/>
+
+<p><p>A multi-core processor is a processor that contains multiple processing cores on a single chip. Processor vendors such as intel, oracle, IBM all produce different models of multi-core processors.
+A symmetric multiprocessor or SMP is a computer system with multiple identical processors that share memory and connect to it via bus. Here, multiple execution units are not on the same chip. An SMP may contain multi-core processors. A graphics processing unit is a form of coprocessor originally intended for graphics processing but can execute a program when this is requested by the host processor. Field programmable gate arrays (FPGA) is another form of a coprocessor which can manipulate itself for a given task. This can be advantageous in the form of improved performance when optimized for a specific application. Finally, computer clusters are groups of connected computers with no commonly shared memory.
+<p>More information on the subject can be found at the link below.
+<p>(https://www.youtube.com/watch?v=RNVIcm8-6RE)
+
+
+<p><h2>  Introduction Part 2 </h2></font>
+
+
+<h3>How To Use A Raspberry Pi</h3>
+<p>Before we begin setting up a raspberry pi, these are the items that we will need:
+<p>The Pi: Raspberry Pi 3 Model B+ ($40 at Amazon)
+<p>microSD card: SanDisk Ultra 32GB microSD card ($8 at Amazon)
+<p>microSD card reader: SanDisk Mobile Mate microSD card reader ($13 at Amazon)
+<p>Power supply: CanaKit 5V Raspberry Pi Power supply ($10 at Amazon)
+<p>USB keyboard: AmazonBasics Wired Keyboard ($14 at Amazon)
+<p>USB mouse: Logitech B100 ($10 at Amazon)
+
+<p>You'll also need a monitor or TV that accepts either HDMI or composite video input. HDMI works best, but composite video is workable. Many Raspberry Pi projects use an internet connection, so you'll also want a Wi-Fi dongle or ethernet cable.
+
+<h3>How to reformat your microSD card:</h3>
+<p>Insert your microSD card into the USB card reader.
+<p>Connect the card reader to your computer.
+<p>Download SD Formatter 5.0.1.
+<p>Double-click on Install SD Card Formatter 5.0.1.mpkg in your downloads folder in your Dock to install SD Formatter 5.0.
+<p>Follow the instructions in the installation window. 
+<p>Click the Launchpad icon in your Dock. It looks like a silver rocket ship.
+<p>Find the SD Formatter 5.0.1 app.
+<p>To move between Launchpad windows, click the Next Page icons at the bottom center of the screen, or swipe to the right or left with your trackpad or Magic Mouse. 
+<p>Click on the SD Formatter 5.0.1 app to open it. A formatting window will appear on your desktop.
+<p>Under Select Card select your microSD card from the dropdown menu.
+<p>Click Format in the bottom right corner.
+<p>When the reformat is complete, you will get a notification window. Select OK to close the window. Your microSD card is now ready to install the operating system to the Raspberry Pi.
+
+<h3>How to Download NOOBS onto the microSD card:</h3>
+<p>Download the ZIP file of NOOBS Version 3.0.0. It is a large file and will take a while to complete. You will want Raspbian, so do not download NOOBS Lite.
+<p>Double-click on the NOOBS file from the Downloads folder in your Dock to open it.
+<p>Select the first file inside the NOOBS folder.
+<p>Scroll down and Shift + left-click on the last file in the NOOBS folder.
+<p>Drag and drop all selected NOOBS files into the SD card icon on your desktop. You don't have to open the SD card drive.
+<p>Right-click on the SD card icon.
+<p>Select "Eject [SD Card Name]".
+<p>Remove the card reader from your computer.
+<p>Remove the microSD card from the card reader.
+<p>Now that NOOBS is loaded onto your microSD card, you're ready to set up your Raspberry Pi.
+<h3>Set up your Raspberry Pi</h3>
+<p>Insert the microSD card into the card slot on the underside of the Raspberry Pi.
+<p>Plug the USB keyboard into one of the USB ports.
+<p>Plug the USB mouse into one of the USB ports
+<p>Alternatively, connect the Bluetooth adapter into one of the USB ports.
+<p>Turn on your monitor or TV set and make sure it is set to the proper input (e.g. HDMI 1 or Component)
+<p>Plug the HDMI or video component cable into the monitor or TV set. 
+<p>Connect the other end of the cable into the Raspberry Pi.
+<p>Connect an ethernet cable to your router if you plan to connect to the Internet.
+<p>Connect the other end of the cable to your Raspberry Pi.
+<p>Alternately, connect the Wi-Fi adapter to the Raspberry Pi.
+<p>Connect the power supply to the Raspberry Pi.
+<p>Plug the power supply into the power outlet. This will turn on and boot up Raspberry Pi. A power indicator light will begin to glow, letting you know that you are connected.
+<p>A start screen should appear on the monitor or TV you're using.
+<p>Download the Raspbian operating system on the Raspberry Pi
+<p>Select Raspbian.
+<p>Click Install.
+<p>When the warning window pops up. Click Yes to confirm. This is just letting you know that the microSD card will be overwritten with an uncompressed version of the Raspbian operating system. 
+Wait for the installation process to complete.
+Once the installation process is finished, Raspbian will automatically begin to boot.
+
+<h3>Configure your Raspberry Pi</h3>
+<p>Click Menu in the upper left corner of the screen.
+<p>Select Preferences in the dropdown menu.
+<p>Select Raspberry Pi Configuration under Preferences.
+<p>When the configuration window appears, click on the Localisation tab.
+<p>Click on Set Locale… to set your location.
+<p>Click on Set timezone… to set your local time.
+<p>Click on Set Keyboard… to set your keyboard language.
+<p>Reconfiguring your Raspberry Pi will require a reboot. When the reboot window appears, click Yes to continue.
+<p>You are set up and ready to start using Raspberry Pi!
+<p>More information on the subject can be found here:
+
+<p>(https://www.imore.com/how-get-started-using-raspberry-pi)
+
+<h3>How to edit and compile a C program on Raspberry Pi</h3>
+
+<p>To demonstrate how to create a C program, compile it, and run it on the Raspberry Pi, we’ll make a simple program that will print “hello world” in the terminal.
+The coding process in C consists of four steps:
+
+<p>1: Creating the Source File
+To start, open the Nano text editor and create a new file with a .c extension by entering this at the command prompt:
+<p>sudo nano hello-world.c
+<p>This file is where you’ll write the C code. You can write the code in any text editor, just make sure to give the file a .c extension.
+Now, enter this code into Nano:
+<p>#include <stdio.h>
+<p>
+<p>int main()
+<p>{
+<p>   printf("Hello, World! \n");
+<p>   return 0;
+<p>}
+<p>
+
+
+<p>After entering the code, enter Ctrl-X and Y to save and exit Nano.
+
+<p>2: Compiling the Program
+<p>Code written in C will need to be compiled before it can be run on a computer. Compiling is the process of converting the code you write into machine readable instructions that can be understood by the computer’s processor.
+When you compile your source file, a new compiled file gets created. For example, entering the command below will compile hello-world.c into a new file called myfirstcprogram:
+
+<p>gcc hello-world.c -o myfirstcprogram
+
+<p>3: Making the Program Executable
+
+<p>Now we need to make the compiled file executable. To do that, we just need to change the file permissions. Enter this at the command prompt:
+<p>chmod +x myfirstcprogram
+
+<p>4: Executing the Program
+Now all we need to do to run the compiled, executable, C program is enter this at the command prompt:
+<p>./myfirstcprogram
+<p>More information on the subject can be found here:
+<p>(https://www.circuitbasics.com/how-to-write-and-run-a-c-program-on-the-raspberry-pi/)
+
+
+
+
+			</center></p>
+
+			
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>

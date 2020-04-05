@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>    Chapter 8       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Chapter 8 - OpenMP Directives and Other Function Calls </h2></font>
+			<center><p>
+<h3>Synchronization Constructs</h3>
+<p>Consider a simple example where two threads are both trying to update variable x at the same time: 
+ <center><img  src="19.png"/>
+<p><b>One possible execution sequence: </b>
+<p>Thread 1 initializes x to 0 and calls update(x) 
+<p>Thread 1 adds 1 to x. 
+<p>x now equals 1 
+<p>Thread 2 initializes x to 0 and calls update(x) 
+<p>x now equals 0 
+<p>Thread 1 prints x, which is equal to 0 instead of 1 
+<p>Thread 2 adds 1 to x. 
+<p>x now equals 1. 
+<p>Thread 2 prints x as 1. 
+
+<p><b>To avoid a situation like this, the updating of x must be synchronized between the two threads to ensure that the correct result is produced. </b>
+<p>OpenMP provides a variety of Synchronization Constructs that control how the execution of each thread proceeds relative to other team threads.
+<p>
+<p><h3>The MASTER directive</h3>
+<p>This specifies a region that is to be executed only by the master thread of the team. All other threads on the team skip this section of code.
+<p>There is no implied barrier associated with this directive. This is the format for the MASTER directive in C/C++:
+<p>
+<p><p>#pragma omp master  newline
+<p>
+<p>   structured_block
+<p>
+<p><h3>The CRITICAL directive</h3>
+<p>This specifies a region of code that must be executed by only one thread at a time. If a thread is currently executing inside a CRITICAL region and another thread reaches that CRITICAL region and attempts to execute it, it will block until the first thread exits that CRITICAL region.
+<p>This is the format for the CRITICAL directive in C/C++:
+<p><p>#pragma omp critical [ name ]  newline
+<p>
+<p>   structured_block
+<p>
+<p><h3>The BARRIER directive</h3>
+<p>This synchronizes all threads in the team. 
+<p>When a BARRIER directive is reached, a thread will wait at that point until all other threads have reached that barrier. All threads then resume executing in parallel the code that follows the barrier.
+<p>This is the format for the BARRIER directive in C/C++:
+<p><p>#pragma omp barrier  newline
+<p>
+<p><h3>The ORDERED directive</h3>
+<p>This specifies that iterations of the enclosed loop will be executed in the same order as if they were executed on a serial processor. 
+<p>Threads will need to wait before executing their chunk of iterations if previous iterations haven't completed yet. 
+<p>Used within a DO / for loop with an ORDERED clause 
+<p>The ORDERED directive provides a way to "fine tune" where ordering is to be applied within a loop. Otherwise, it is not required.
+<p><b>This is the format for the ORDERED directive in C/C++:</b>
+<p><p>#pragma omp for ordered [clauses...]
+<p>   (loop region)
+<p><p>#pragma omp ordered  newline
+<p>  structured_block
+<p>   (endo of loop region)
+<p>
+<p><h3>Run-Time Library Routines</h3>
+<p>The OpenMP API includes an ever-growing number of run-time library routines. 
+<p>These routines are used for a variety of purposes as shown in the table below:
+ <center><img  src="20.png"/>
+
+<p>The following are a few important Run-Time Library Routines and a more in-depth explanation…
+
+<p><h3>omp_set_num_threads()</h3>
+<p>Sets the number of threads that will be used in the next parallel region. Must be a postive integer.
+<p><b>Format(C/C++): </b>
+<p>#include <omp.h>
+<p>void omp_set_num_threads(int num_threads)
+
+<p><h3>omp_get_num_threads()</h3>
+<p>Returns the number of threads that are currently in the team executing the parallel region from which it is called.
+<p><b>Format(C/C++): </b>
+<p>#include <omp.h>
+<p>int omp_get_num_threads(void)
+
+<p><h3>omp_get_max_threads()</h3>
+<p>Returns the maximum value that can be returned by a call to the OMP_GET_NUM_THREADS function.
+<p><b>Format(C/C++):</b>
+<p>#include <omp.h>
+<p>int omp_get_max_threads(void)
+
+
+<p><h3>omp_get_thread_num()</h3>
+<p>Returns the thread number of the thread, within the team, making this call. This number will be between 0 and OMP_GET_NUM_THREADS-1. The master thread of the team is thread 0
+<p><b>Format(C/C++):</b>
+<p>#include <omp.h>
+<p>int omp_get_thread_num(void)
+
+
+<p><h3>omp_get_num_procs()</h3>
+<p>Returns the number of processors that are available to the program.
+<p><b>Format(C/C++):</b>
+<p>#include <omp.h>
+<p>int omp_get_num_procs(void)
+
+
+<p><h3>omp_in_parallel()</h3>
+<p>May be called to determine if the section of code which is executing is parallel or not.
+<p><b>Format(C/C++):</b>
+<p>#include <omp.h>
+<p>int omp_in_parallel(void)
+<p><b>More information on the topic can be found here:</b>
+<p>(https://computing.llnl.gov/tutorials/openMP/#Introduction)
+
+
+
+			</center></p>
+
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>

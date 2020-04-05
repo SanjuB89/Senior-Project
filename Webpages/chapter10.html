@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+   <style type="text/css" media="all">
+
+	body{background: #466368;
+		background: -webkit-linear-gradient(#999999, #990000);
+		background:    -moz-linear-gradient(#999999, #990000);
+		background:         linear-gradient(#999999, #990000);}
+	img{}
+	h2{ color:#00FFFF; font-size:30px; text-align:center;}
+	h3{ color:white; font-size:20px; text-align:left;}
+	ol{ color:white; font-family:Times New Roman; font-style:normal; font-size:20pt; }
+	table{ color:white; font-family:Arial; font-style:normal; font-size:13pt }
+	
+	
+	p{ color:white; text-align:left; margin: 10px 100px;}
+	
+	a{color:white;}
+	
+	h3 {
+		margin: 30px 100px;
+		color: Orange;
+	}
+	
+	</style>
+		<link rel="stylesheet" type="text/css" href="PPS_WebsiteStyleSheet.css" />
+	<div class="rightLinks">
+            <div class="linkTitle">Links:</div>
+    			<div class="links" text-align=left; >
+				<a href="Parallel Prog. Site.html">Home Page</a><br />
+                <a href="Introduction.html">Chapter 1</a><br />
+                <a href="chapter2.html">Chapter 2</a><br />
+                <a href="chapter3.html">Chapter 3</a><br />
+                <a href="chapter4.html">Chapter 4</a><br />
+                <a href="chapter5.html">Chapter 5</a><br />
+				<a href="chapter6.html">Chapter 6</a><br />
+                <a href="chapter7.html">Chapter 7</a><br />
+                <a href="chapter8.html">Chapter 8</a><br />
+                <a href="chapter9.html">Chapter 9</a><br />
+                <a href="chapter10.html">Chapter 10</a><br />
+				<a href="chapter11.html">Chapter 11</a><br />
+                <a href="chapter12.html">Chapter 12</a><br />
+                <a href="chapter13.html">Overview</a><br />
+				</div>
+        </div>
+      <title>    Chapter 10       </title>
+   </head>
+   <body><meta name = "keywords" content = "computer, science, intro, 100, CSC, HTML">
+   			<div id="image" style="display:inline;">
+			<center><img style="height:147px; width:486px" src="StMartinlogoTP.png"/>
+			</div>
+			
+			<h2>  Chapter 10 - MPI Functions </h2></font>
+			<center><p>
+<p><h3>MPI_Get_version()</h3>
+<p>This function returns the version number of MPI.
+<p>int MPI_Get_version(
+<p>  int *version,
+<p>  int *subversion
+<p>);
+<p>
+<p><h3>MPI_Get_processor_name()</h3>
+<p><p>This function gets the name of the processor. The name returned should identify a particular piece of hardware; the exact format is implementation defined. This name may or may not be the same as might be returned by gethostname, uname, or sysinfo.
+<p>int MPI_Get_processor_name(
+<p>  char *name,
+<p>  int *resultlen
+<p>);
+<p>
+<p>int MPI_Get_processor_name(
+<p>  wchar_t *name,
+<p>  int *resultlen
+<p>);
+<p>
+<p><h3>MPI_Sendrecv()</h3>
+<p><p>This function sends and receives a message.
+<p>int MPI_Sendrecv(
+<p>  void *sendbuf,
+<p>  int sendcount,
+<p>  MPI_Datatype sendtype,
+<p>  int dest,
+<p>  int sendtag,
+<p>  void *recvbuf,
+<p>  int recvcount,
+<p>  MPI_Datatype recvtype,
+<p>  int source,
+<p>  int recvtag,
+<p>  MPI_Comm comm,
+<p>  MPI_Status *status
+<p>);
+<p><b>Parameters</b>
+<p>sendbuf 
+<p>[in] initial address of send buffer (choice) 
+<p>sendcount 
+<p>	[in] number of elements in send buffer (integer) 
+<p>sendtype 
+<p>	[in] type of elements in send buffer (handle) 
+<p>dest 
+<p>	[in] rank of destination (integer) 
+<p>sendtag 
+<p>	[in] send tag (integer) 
+<p>recvbuf 
+<p>	[out] initial address of receive buffer (choice) 
+<p>recvcount 
+<p>	[in] number of elements in receive buffer (integer) 
+<p>recvtype 
+<p>	[in] type of elements in receive buffer (handle) 
+<p>source 
+<p>	[in] rank of source (integer) 
+<p>recvtag 
+<p>	[in] receive tag (integer) 
+<p>comm 
+<p>	[in] communicator (handle) 
+<p>status 
+<p>	[out] status object (Status). This refers to the receive operation.
+
+<p><b>More information on the subject can be found here:</b>
+<p>(https://computing.llnl.gov/tutorials/mpi/)
+
+
+
+			</center></p>
+
+			
+			<p><a href = "https://moodle.stmartin.edu/">Link to Course Moodle Page</a>
+
+
+   </body>
+</html>
